@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -10,26 +11,72 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+       <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจัดบอลสนาม Jakhong</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
         body {
-            box-sizing: border-box;
             font-family: 'Kanit', sans-serif;
-        }
-        
-        .nav-item.active {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            margin: 0;
+            background: #111827; /* เทาเข้มแบบเทคโนโลยี */
             color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
-        
+
+        /* ---------- Navigation ---------- */
+        .nav {
+            display: flex;
+            gap: 20px;
+            padding: 16px 24px;
+            background: #1E1E1E;
+        }
+
+        .nav-item {
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, #B91C1C, #7F1D1D); /* แดงไวน์ */
+            color: #FACC15; /* ทอง */
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
+        }
+
+        /* ---------- Card Hover ---------- */
         .card-hover:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
+
+        /* ---------- Gradient BG (ปรับเป็นแดงทอง) ---------- */
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #B91C1C 0%, #7F1D1D 100%);
         }
-        
+
+        /* ---------- Glass Effect ---------- */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(250, 204, 21, 0.2); /* ขอบทองจางๆ */
+            padding: 30px;
+            margin: 30px auto;
+            width: 80%;
+            border-radius: 20px;
+        }
+
+        /* ---------- Alerts ---------- */
         .success-message, .error-message {
             position: fixed;
             top: 20px;
@@ -41,42 +88,38 @@
             transform: translateX(400px);
             transition: transform 0.3s ease;
         }
-        
+
         .success-message {
-            background: #10b981;
+            background: #16A34A;
             color: white;
         }
-        
+
         .error-message {
-            background: #ef4444;
+            background: #DC2626;
             color: white;
         }
-        
+
         .success-message.show, .error-message.show {
             transform: translateX(0);
         }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
+
+        /* ---------- Record Type Card ---------- */
         .record-type-card {
             transition: all 0.3s ease;
         }
-        
+
         .record-type-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(185, 28, 28, 0.25); /* เงาแดง */
         }
-        
+
         input[name="record-type"]:checked + .record-type-card {
-            border-color: currentColor;
-            background: rgba(59, 130, 246, 0.05);
+            border-color: #FACC15; /* ขอบทอง */
+            background: rgba(250, 204, 21, 0.1); /* ทองใส */
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-full">
     <!-- Header -->
     <header class="gradient-bg text-white shadow-lg">
@@ -324,19 +367,24 @@
                 </div>
             </div>
         </div>
- </div>
-        <div class="mb-8">
-    <div class="bg-gradient-to-r from-red-700 to-red-900 text-yellow-300 px-8 py-6 rounded-xl text-center shadow-lg">
-        <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
-            <i class="fas fa-trophy mr-3 text-yellow-400"></i>
-            ตารางคะแนน JAKHONG SENIOR CUP
-        </h2>
-    </div>
+
+        <!-- Leaderboard Section -->
+        <div id="leaderboard" class="section hidden">
+            <div class="glass-effect rounded-xl shadow-lg p-6">
+                <div class="mb-8">
+                    <div class="bg-gradient-to-r from-blue-800 to-purple-800 text-white px-8 py-6 rounded-xl text-center">
+                        <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
+                            <i class="fas fa-trophy mr-3 text-yellow-300"></i>
+                            ตารางคะแนน JAKHONG LEAGUE
+                        </h2>
+
+                    </div>
+                </div>
                 
                 <div class="overflow-x-auto">
                     <table class="w-full" id="leaderboard-table">
                         <thead>
-                            <tr class="bg-gradient-to-r from-blue-900 to-red-900 text-gold">
+                            <tr class="bg-gradient-to-r from-blue-600 to-purple-800 text-white">
                                 <th class="px-4 py-3 text-center font-bold rounded-tl-lg">อันดับ</th>
                                 <th class="px-4 py-3 text-left font-bold">ทีม</th>
                                 <th class="px-4 py-3 text-center font-bold">แข่ง</th>
@@ -5408,7 +5456,7 @@ function handlePlayerSubmit(event) {
                         <div class="bg-gradient-to-r from-blue-800 to-purple-800 text-white px-8 py-6 rounded-xl text-center">
                             <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
                                 <i class="fas fa-trophy mr-3 text-yellow-300"></i>
-                                ตารางคะแนน JAKHONG SENIOR CUP
+                                ตารางคะแนน JAKHONG LEAGUE
                             </h2>
                         </div>
                     </div>
