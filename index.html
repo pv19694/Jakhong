@@ -1067,9 +1067,10 @@
             </div>
         </div>
 
-        <!-- Daily Summary Section -->
+       <!-- Daily Summary Section -->
 <div id="daily-summary" class="section hidden">
     <div class="glass-effect rounded-xl shadow-2xl p-6 mb-8 bg-white/30 backdrop-blur-md border border-yellow-400">
+
         <!-- Header -->
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
             <h2 class="text-2xl font-bold flex items-center text-red-900">
@@ -1101,14 +1102,35 @@
                 </div>
             </div>
 
-            
+            <div class="bg-gradient-to-br from-yellow-500 via-yellow-400 to-red-500 text-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-yellow-100 text-sm mb-1">ประตูรวม</p>
+                        <p class="text-3xl font-bold" id="daily-goals">0</p>
+                    </div>
+                    <i class="fas fa-bullseye text-3xl opacity-90 drop-shadow-lg"></i>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-700 via-red-600 to-yellow-500 text-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-yellow-100 text-sm mb-1">ทีมที่เล่น</p>
+                        <p class="text-3xl font-bold" id="daily-teams">0</p>
+                    </div>
+                    <i class="fas fa-users text-3xl opacity-90 drop-shadow-lg"></i>
+                </div>
+            </div>
+        </div>
+
         <!-- MATCHDAY + PLAYER HIGHLIGHT -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Daily Matches List / MATCHDAY -->
+
+            <!-- MATCHDAY BLOCK (LEFT SIDE) -->
             <div class="lg:col-span-2 rounded-2xl p-5 
                         bg-gradient-to-b from-[#7b0000] via-[#8b0000] to-[#d4af37]
                         shadow-md text-white">
-                <!-- MATCHDAY center title -->
+
                 <div class="flex justify-center mb-4 text-center">
                     <h3 class="text-base md:text-lg font-extrabold tracking-[0.25em] uppercase">
                         MATCHDAY : <span id="matchday-date-text">-- / -- / ----</span>
@@ -1116,18 +1138,12 @@
                 </div>
 
                 <!-- Match list -->
-                <div id="daily-matches-list" class="space-y-3">
-                    <!-- ตัวอย่างโครง (JS จะมาแทนที่) -->
-                    <!--
-                    <div class="bg-white rounded-2xl shadow-md p-2 flex items-center justify-between gap-3 text-gray-900">
-                        ...
-                    </div>
-                    -->
-                </div>
+                <div id="daily-matches-list" class="space-y-3"></div>
             </div>
 
-            <!-- Player Highlights (ใช้ id เดิมให้ระบบคุณต่อได้) -->
+            <!-- PLAYER HIGHLIGHT BLOCK (RIGHT SIDE) -->
             <div class="bg-white rounded-2xl p-5 shadow-md border border-red-100 flex flex-col gap-4" id="daily-player-records">
+
                 <div class="flex items-center justify-between">
                     <h3 class="text-lg font-bold flex items-center text-red-800">
                         <i class="fas fa-medal mr-2 text-yellow-500"></i>
@@ -1135,33 +1151,29 @@
                     </h3>
                 </div>
 
-                <!-- Goal Scorers Section -->
+                <!-- Goal Scorers -->
                 <section>
                     <h4 class="text-sm font-bold text-red-700 mb-2 flex items-center gap-1">
                         <span class="w-2 h-2 rounded-full bg-red-600"></span>
                         ผู้ทำประตูวันนี้
                     </h4>
-                    <div id="goal-scorers-grid" class="grid grid-cols-2 gap-2">
-                        <!-- การ์ดผู้ทำประตู (JS เติม) -->
-                    </div>
+                    <div id="goal-scorers-grid" class="grid grid-cols-2 gap-2"></div>
                 </section>
 
                 <hr class="border-red-100 my-1" />
 
-                <!-- Goalkeepers Section -->
+                <!-- Goalkeepers -->
                 <section>
                     <h4 class="text-sm font-bold text-red-700 mb-2 flex items-center gap-1">
                         <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
                         ผู้รักษาประตูเด่น
                     </h4>
-                    <div id="goalkeepers-grid" class="grid grid-cols-2 gap-2">
-                        <!-- การ์ดผู้รักษาประตู (JS เติม) -->
-                    </div>
+                    <div id="goalkeepers-grid" class="grid grid-cols-2 gap-2"></div>
                 </section>
 
                 <hr class="border-red-100 my-1" />
 
-                <!-- Top Scorers Banner + List -->
+                <!-- TOP SCORERS BANNER -->
                 <section>
                     <div class="w-full py-2 mb-3 rounded-xl bg-gradient-to-r from-yellow-500 to-red-600
                                 shadow-md flex items-center justify-center gap-2">
@@ -1171,14 +1183,14 @@
                         </h4>
                     </div>
 
-                    <div id="top-scorers-list" class="space-y-2">
-                        <!-- การ์ด Top 3 ดาวซันโว (JS เติม) -->
-                    </div>
+                    <div id="top-scorers-list" class="space-y-2"></div>
                 </section>
+
             </div>
         </div>
     </div>
 </div>
+
 
     </main>
 
