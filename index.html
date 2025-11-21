@@ -1065,7 +1065,7 @@
             </div>
         </div>
 
-   <!-- Daily Summary Section (เวอร์ชันใหม่) -->
+   <!-- Daily Summary Section (ดีไซน์ใหม่แบบกล่องแดง-ทอง) -->
 <div id="daily-summary" class="section hidden">
   <div class="w-full max-w-6xl mx-auto space-y-8">
 
@@ -1073,7 +1073,6 @@
     <div class="bg-[#0b1024] rounded-3xl shadow-xl border border-yellow-400 px-6 py-8 flex items-center justify-center relative overflow-hidden">
       <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_#ffffff33,_transparent_65%)]"></div>
 
-      <!-- ชื่อทัวร์นาเมนต์ -->
       <h1 class="text-3xl md:text-4xl font-extrabold text-white drop-shadow-xl text-center relative z-10">
         ผลการแข่งขัน
         <span class="text-yellow-300 drop-shadow-2xl font-extrabold">
@@ -1081,7 +1080,7 @@
         </span>
       </h1>
 
-      <!-- เลือกวันที่ + แสดงวันที่ -->
+      <!-- เลือกวันที่ + แสดงวันที่ (วัน/เดือน/ปี) -->
       <div
         class="absolute bottom-4 right-4 flex items-center gap-3 bg-black/40 px-4 py-2 rounded-full text-white shadow-lg">
         <i class="fas fa-calendar-day text-yellow-300"></i>
@@ -1101,7 +1100,7 @@
       </div>
     </div>
 
-    <!-- SUMMARY CARDS (3 ใบ ใช้ id เดิมให้ JS ต่อได้) -->
+    <!-- SUMMARY CARDS 3 ใบ -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
       <div class="bg-gradient-to-br from-red-600 via-red-500 to-yellow-400 text-white rounded-xl shadow-lg p-6">
         <div class="flex items-center justify-between">
@@ -1134,15 +1133,37 @@
       </div>
     </div>
 
-    <!-- SCOREBOARD (แมตช์ในวันนั้น) -->
-    <div class="bg-[#0b1024] rounded-3xl shadow-xl border border-yellow-500 overflow-hidden relative">
-      <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_#ffffff33,_transparent_60%)] pointer-events-none"></div>
-      <div id="daily-matches-list" class="flex flex-col relative z-10">
-        <!-- JS ของเธอจะเติมการ์ดแมตช์เข้ามาตรงนี้ -->
+    <!-- SCOREBOARD แบบกล่องแดง-ทอง -->
+    <div class="bg-gradient-to-r from-red-700 via-red-600 to-yellow-400 rounded-3xl shadow-xl border border-yellow-500 overflow-hidden">
+      <div class="flex flex-col divide-y divide-red-500/40" id="daily-matches-list">
+        <!--
+          JS ของต้นตาลจะเติมรายการแมตช์เข้ามาในนี้
+          โครงตัวอย่าง 1 แมตช์:
+
+          <div class="flex items-center text-white px-6 py-5">
+            <div class="flex items-center gap-3 flex-[0.45]">
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-yellow-300 bg-black/10 overflow-hidden">
+                <img src="logo-teamA.png" alt="Team A" class="w-full h-full object-cover">
+              </div>
+              <span class="font-bold text-sm md:text-base leading-snug">ชื่อทีมฝั่งซ้าย</span>
+            </div>
+
+            <div class="mx-4">
+              <span class="inline-block text-3xl md:text-4xl font-extrabold tracking-[0.2em]">3 - 1</span>
+            </div>
+
+            <div class="flex items-center gap-3 justify-end flex-[0.45]">
+              <span class="font-bold text-sm md:text-base text-right leading-snug">ชื่อทีมฝั่งขวา</span>
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-yellow-300 bg-black/10 overflow-hidden">
+                <img src="logo-teamB.png" alt="Team B" class="w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+        -->
       </div>
     </div>
 
-    <!-- PLAYER STATS -->
+    <!-- PLAYER STATS (สีม่วงด้านล่าง – เหมือนของเดิม) -->
     <div
       class="relative rounded-3xl shadow-2xl border border-purple-500/60 p-6 md:p-8 overflow-hidden bg-gradient-to-br from-[#0b1024] via-[#190a33] to-[#3a0b3a]">
       <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_#ffffff33,_transparent_55%)] pointer-events-none"></div>
@@ -1151,7 +1172,7 @@
 
       <div class="relative z-10 space-y-10">
 
-        <!-- TOP 3 SUMMARY -->
+        <!-- TOP 3 สถิติรวม -->
         <section>
           <h2 class="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-6 flex items-center gap-3">
             <i class="fas fa-chart-line text-yellow-300"></i>
@@ -1171,7 +1192,7 @@
               </div>
             </div>
 
-            <!-- Top 3 ผู้รักษาประตูยอดเยี่ยม -->
+            <!-- Top 3 ผู้รักษาประตู -->
             <div class="bg-white/5 border border-cyan-300/50 rounded-2xl p-4 shadow-md">
               <h3 class="text-lg font-bold text-cyan-300 mb-3 flex items-center gap-2">
                 <i class="fas fa-shield-heart text-cyan-300"></i>
@@ -1187,7 +1208,6 @@
 
         <!-- TODAY SCORERS & KEEPERS -->
         <section class="space-y-10">
-
           <!-- ผู้ที่ทำประตูได้วันนี้ -->
           <div>
             <h3 class="text-xl md:text-2xl font-extrabold text-yellow-300 mb-3 flex items-center gap-2">
@@ -1209,7 +1229,6 @@
               <!-- JS เติมการ์ด 160px ต่อคน -->
             </div>
           </div>
-
         </section>
 
       </div>
@@ -1217,7 +1236,7 @@
   </div>
 </div>
 
-<!-- สคริปต์จัดรูปแบบวันที่ + เรียก updateDailySummary() -->
+<!-- จัดรูปแบบวันที่เป็น วัน/เดือน/ปี และเรียก updateDailySummary() -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const input  = document.getElementById('summary-date');
@@ -1237,7 +1256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('change', () => {
     formatAndShow(input.value);
     if (typeof updateDailySummary === 'function') {
-      updateDailySummary();   // ให้ JS เดิมของเธอทำงานต่อ
+      updateDailySummary();   // ให้ JS เดิมของต้นตาลทำงานต่อได้
     }
   });
 
@@ -1249,12 +1268,12 @@ document.addEventListener('DOMContentLoaded', () => {
   input.value = `${yyyy}-${mm}-${dd}`;
   formatAndShow(input.value);
 
-  // ถ้าอยากโหลดข้อมูลทันทีวันแรก
   if (typeof updateDailySummary === 'function') {
     updateDailySummary();
   }
 });
 </script>
+
 
 
 
